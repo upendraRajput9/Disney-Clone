@@ -31,14 +31,19 @@ h1{
                     padding: 15px;
                     font-size: 15px;
                     padding-left: 20px;
+                   
                 }
 
                 .profile_plan{
                     h3{
                         border-bottom: 1px solid #282c2d;
-                        padding-bottom: 10px;
+                        padding: 10px 0;
+                        font-size: 2rem;
                     }
-                button{
+                    h4{
+                        padding-top: 10px;
+                    }
+                .signOut_btn{
                     padding:10px 20px;
                     font-size: 1rem;
                     margin-top: 5%;

@@ -7,6 +7,7 @@ import { logout, login, selectUser } from './features/userSlice';
 import HomeScreen from './Components/HomeScreen';
 import Login from './Components/Login';
 import Profile from './Components/Profile';
+import StripContainer from './Components/StripContainer';
 
 function App() {
   const user = useSelector(selectUser);
@@ -16,7 +17,6 @@ function App() {
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((userAuth) => {
       if (userAuth) {
-        console.log(userAuth)
         //Logged in
         dispatch(login({
           uid:userAuth.uid,
@@ -37,6 +37,7 @@ function App() {
         <Routes>
         <Route exact path='/' element={<HomeScreen />} />
         <Route exact  path='/profile' element={<Profile/>}/>
+        <Route exact path='/pay' element={<StripContainer/>}/>
         <Route />
       </Routes>
 
