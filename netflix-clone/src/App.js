@@ -40,7 +40,6 @@ function App() {
         <Route exact path='/pay' element={<StripContainer/>}/>
         <Route />
       </Routes>
-
       }
     </div>
   );
