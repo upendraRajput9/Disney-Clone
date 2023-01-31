@@ -3,6 +3,7 @@ import SignUp from "./SignUp";
 
 const Login = () => {
   const [signUp, setSignUp] = useState(false);
+  const [email,setEmail] = useState("")
 
   return (
     <div className="login_page">
@@ -19,7 +20,7 @@ const Login = () => {
       </div>
       <div className="login_body">
         {signUp ? (
-          <SignUp />
+          <SignUp email={email} />
         ) : (
           <>
             <h1>Unlimited films, TV programmes and more.</h1>
@@ -30,7 +31,7 @@ const Login = () => {
             </h3>
             <div className="login_input">
               <form>
-                <input type="email" placeholder="Email Address" />
+                <input type="email" value={email} onChange={e=>setEmail(e.target.value)} placeholder="Email Address" />
                 <button
                   onClick={() => setSignUp(true)}
                   className="login_getStarted_btn"

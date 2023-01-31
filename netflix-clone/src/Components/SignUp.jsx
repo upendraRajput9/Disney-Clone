@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { useRef } from "react";
 import { doc, setDoc } from "firebase/firestore";
 import db from "../firebase";
 import { auth } from "../firebase";
 
-const SignUp = () => {
+const SignUp = (props) => {
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
+  const [signUp,setSignUp] = useState(true)
+ 
 
   const register = async (e) => {
     e.preventDefault();
@@ -42,22 +44,21 @@ const SignUp = () => {
       alert("Enter a correct info");
     }
   };
-
+  console.log(props.email, emailRef)
   return (
     <div className="signUp_comp">
       <form>
-        <h1>Sign In</h1>
+        <h1>{ signUp?"Sign In" : "Sign Up"}</h1>
         <input ref={emailRef} type="email" placeholder="Email" />
         <input ref={passwordRef} type="password" placeholder="Password" />
-        <button type="submit" onClick={signIn}>
-          Sign In
+        <button type="submit" onClick= { signUp?signIn:register}>
+        { signUp?" Sign In" : " Sign Up"}
         </button>
         <h4>
           {" "}
-          <span style={{ color: "gray" }}>New to Netflix?</span>
-          <span onClick={register} className="signUp_link">
-            {" "}
-            Sign Up now
+          <span style={{ color: "gray" }}>{ signUp?"New to Netflix?":" Netflix?"}</span>
+          <span onClick={()=>setSignUp(!signUp)}  className="signUp_link">
+          { signUp?" Sign Up now":" Sign In now"}
           </span>
         </h4>
       </form>
